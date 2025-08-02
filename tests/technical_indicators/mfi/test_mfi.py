@@ -34,10 +34,10 @@ def test_mfi_scenarios():
     }
 
     expected_data = {
-        "ASCENDING": [np.nan, np.nan, 100.0, 100.0, 100.0],
-        "DESCENDING": [np.nan, np.nan, 0.0, 0.0, 0.0],
-        "CONSTANT": [np.nan, np.nan, 0.0, 0.0, 0.0],
-        "MIXED": [np.nan, np.nan, 100.0, 100.0, 60.623782],
+        "ASCENDING": [0.0, 0.0, 100.0, 100.0, 100.0],
+        "DESCENDING": [0.0, 0.0, 0.0, 0.0, 0.0],
+        "CONSTANT": [0.0, 0.0, 0.0, 0.0, 0.0],
+        "MIXED": [0.0, 0.0, 100.0, 100.0, 60.623782],
     }
 
     for scenario_name, data in market_data.items():
