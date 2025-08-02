@@ -5,6 +5,8 @@ description = "High-performance TA indicators for Python"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "numpy>=2.3.2",
+    "pandas>=2.3.1",
 ]
 
 [dependency-groups]
@@ -16,6 +18,7 @@ dev = [
   "pyfakefs>=5.8.0",
   "pytest>=8.3.5",
   "pytest-approvaltests>=0.2.4",
+  "pytest-benchmark>=5.1.0",
   "pytest-cov>=6.1.1",
   "pytype>=2024.10.11 ; sys_platform == 'linux'",
   "ruff>=0.11.5",
