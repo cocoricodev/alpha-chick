@@ -1,5 +1,3 @@
-# tests/test_mfi.py
-
 import numpy as np
 import pandas as pd
 import pytest

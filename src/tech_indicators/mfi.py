@@ -48,11 +48,7 @@ def mfi(high: pd.Series, low: pd.Series, close: pd.Series, volume: pd.Series, pe
     pos_sum = roll_pos - shift_pos.fillna(0.0)
     neg_sum = roll_neg - shift_neg.fillna(0.0)
 
-    ratio = np.where(
-        np.isclose(neg_sum, 0.0, atol=1e-10),
-        np.where(np.isclose(pos_sum, 0.0, atol=1e-10), 0.0, np.inf),
-        pos_sum / neg_sum,
-    )
+    ratio = (pos_sum / neg_sum).fillna(0.0)
 
     mfi_values = 100.0 - (100.0 / (1.0 + ratio))
 
