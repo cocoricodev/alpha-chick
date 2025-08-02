@@ -16,8 +16,8 @@ def rsi(closes: pd.Series, period: int) -> pd.Series:
     if len(closes) < period + 1:
         raise ValueError(f"Insufficient data: closes length ({len(closes)}) must be >= period + 1 ({period + 1}).")
 
-    if closes.empty or closes.isna().all():
-        raise ValueError("Input 'closes' must not be empty or contain only NaN values.")
+    if closes.isna().all():
+        raise ValueError("Input 'closes' contain only NaN values.")
 
     delta = closes.diff()
     gain = delta.clip(lower=0.0)
