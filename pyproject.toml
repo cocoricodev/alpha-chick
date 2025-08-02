@@ -1,7 +1,7 @@
 [project]
-name = "project_name"
+name = "alpha-chick"
 version = "0.1.0"
-description = "Project Description"
+description = "High-performance TA indicators for Python"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
