@@ -5,8 +5,8 @@ import pandas as pd
 
 def atr(high: pd.Series, low: pd.Series, close: pd.Series, period: int) -> pd.Series:
     """
-    :param high:  pandas Series of high prices
-    :param low:   pandas Series of low  prices
+    :param high: pandas Series of high prices
+    :param low: pandas Series of low  prices
     :param close: pandas Series of close prices
     :param period: look-back window (>1)
     :return: pandas Series with ATR values
@@ -26,13 +26,12 @@ def atr(high: pd.Series, low: pd.Series, close: pd.Series, period: int) -> pd.Se
     if high.isna().all() or low.isna().all() or close.isna().all():
         raise ValueError("Input Series contain only NaN values.")
 
-    prev_close = close.shift(1)
+    prev_close = close.shift(1).fillna(close)
     tr1 = high - low
     tr2 = (high - prev_close).abs()
     tr3 = (low - prev_close).abs()
     true_range = np.maximum(np.maximum(tr1, tr2), tr3)
 
-    alpha = 1.0 / period
-    atr_values = true_range.ewm(alpha=alpha, adjust=False, min_periods=period).mean()
+    atr_values = true_range.ewm(alpha=1 / period, adjust=False).mean()
 
     return pd.Series(atr_values, index=high.index)
